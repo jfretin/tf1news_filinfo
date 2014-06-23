@@ -17,11 +17,11 @@ foreach ($as as $a) {
     $src = $a->src;
     if ($src != "") {
         $md5 = md5($src);
-        if (scraperwiki::select("* from data where 'id'='".$md5."'")) {
+        if (scraperwiki::select("* from data where 'md5'='".$md5."'")) {
             echo $md5 . " already in DB!\n";
         } else {
             $img = fopen($src);
-            scraperwiki::save_sqlite(array('id'), array('id' => $md5, 'src' => $src, 'content' => $img));
+            scraperwiki::save_sqlite(array('md5'), array('md5' => $md5, 'src' => $src, 'content' => $img));
             echo "saved " . $md5 . " in DB\n";
         }
     }
