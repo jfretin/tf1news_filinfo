@@ -14,7 +14,17 @@ $dom->load($html);
 $as = $dom->find("article.teaser figure.d-inline a img");
 
 foreach ($as as $a) {
-    print_r($a->src);
+    $src = $a->src;
+    if ($src != "") {
+        $md5 = md5sum($src);
+        if (scraperwiki::select("* from data where 'id'='".$md5."'") {
+            echo $md5 . " already in DB!\n";
+        } else {
+            $img = fopen($src);
+            scraperwiki::save_sqlite(array('id'), array('id' => $md5, 'src' => $src, 'content' => $img));
+            echo "saved " . $md5 . " in DB\n";
+        }
+    }
 }
 //
 // // Write out to the sqlite database using scraperwiki library
