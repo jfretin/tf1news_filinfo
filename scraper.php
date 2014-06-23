@@ -11,10 +11,10 @@ $html = scraperwiki::scrape("http://lci.tf1.fr/");
 // // Find something on the page using css selectors
 $dom = new simple_html_dom();
 $dom->load($html);
-$as = $dom->find(".teasers li a");
+$as = $dom->find("article.teaser figure.d-inline a img");
 
 foreach ($as as $a) {
-    echo $a->href . "<br />";
+    print_r($a->src);
 }
 //
 // // Write out to the sqlite database using scraperwiki library
