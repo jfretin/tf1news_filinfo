@@ -20,7 +20,7 @@ foreach ($as as $a) {
         if (scraperwiki::select("* from data where 'md5'='".$md5."'")) {
             echo $md5 . " already in DB!\n";
         } else {
-            $img = fopen($src);
+            $img = file_get_contents($src);
             scraperwiki::save_sqlite(array('md5'), array('md5' => $md5, 'src' => $src, 'content' => $img));
             echo "saved " . $md5 . " in DB\n";
         }
