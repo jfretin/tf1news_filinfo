@@ -17,7 +17,7 @@ foreach ($as as $a) {
     $src = $a->src;
     if ($src != "") {
         $md5 = md5sum($src);
-        if (scraperwiki::select("* from data where 'id'='".$md5."'") {
+        if (scraperwiki::select("* from data where 'id'='".$md5."'")) {
             echo $md5 . " already in DB!\n";
         } else {
             $img = fopen($src);
