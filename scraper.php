@@ -16,7 +16,7 @@ $as = $dom->find("article.teaser figure.d-inline a img");
 foreach ($as as $a) {
     $src = $a->src;
     if ($src != "") {
-        $md5 = md5sum($src);
+        $md5 = md5($src);
         if (scraperwiki::select("* from data where 'id'='".$md5."'")) {
             echo $md5 . " already in DB!\n";
         } else {
